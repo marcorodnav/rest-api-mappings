@@ -20,7 +20,7 @@ public class ApiController {
         return new ResponseEntity<>("GET with path variable accepted, id:"+id, HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "/get/id/{id}/name/{name}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/get/id/{id}/name/{name}", method = RequestMethod.GET)
     public ResponseEntity<String> optionalFullName(@PathVariable("id") String id,
                                                    @PathVariable("name") String name,
                                                    @RequestParam(name = "lastName",
@@ -29,5 +29,12 @@ public class ApiController {
                                                            defaultValue = "Bolony") String nickname) {
         System.out.println("id = [" + id + "], name = [" + name + "], lastName = [" + lastName + "], nickname = [" + nickname + "]");
         return new ResponseEntity<>("GET with complex params and path variables", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/first_name/{firstName}", method = RequestMethod.GET)
+    public ResponseEntity<String> mandatoryFullName(@PathVariable("first_name") String firstName,
+                                                    @RequestParam(name = "lastName") String lastName) {
+        System.out.println("firstName = [" + firstName + "], lastName = [" + lastName + "]");
+        return new ResponseEntity<>("GET with mandatory request params", HttpStatus.OK);
     }
 }

@@ -32,7 +32,7 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/get/first_name/{firstName}", method = RequestMethod.GET)
-    public ResponseEntity<String> mandatoryFullName(@PathVariable("first_name") String firstName,
+    public ResponseEntity<String> mandatoryFullName(@PathVariable("firstName") String firstName,
                                                     @RequestParam(name = "lastName") String lastName) {
         System.out.println("firstName = [" + firstName + "], lastName = [" + lastName + "]");
         return new ResponseEntity<>("GET with mandatory request params", HttpStatus.OK);
